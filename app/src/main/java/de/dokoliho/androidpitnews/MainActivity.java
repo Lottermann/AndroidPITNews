@@ -30,10 +30,9 @@ public class MainActivity extends Activity {
         HttpURLConnection urlConnection = null;
 
         try {
-//            url = new URL("http://www.androidpit.com/feed/main.xml");
-//            urlConnection = (HttpURLConnection) url.openConnection();
-//            InputStreamReader isr = new InputStreamReader(urlConnection.getInputStream());
-            System.out.println("1");
+            url = new URL("http://www.androidpit.com/feed/main.xml");
+            urlConnection = (HttpURLConnection) url.openConnection();
+            InputStreamReader isr = new InputStreamReader(urlConnection.getInputStream());
             runOnUiThread(
                     new Runnable() {
                         @Override
@@ -41,16 +40,14 @@ public class MainActivity extends Activity {
                             textView.setText("Hello World");
                         }
                     });
-
-            System.out.println("2");
-//            isr.close();
+            isr.close();
         }
-//        catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
